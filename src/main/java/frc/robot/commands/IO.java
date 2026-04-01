@@ -10,6 +10,6 @@ public class IO {
   JoystickButton flywheelSpin = new JoystickButton(driverXbox, 1);
 	
 	public IO() {
-	flywheelSpin.onTrue(RobotCommands.startFlywheel);
+	flywheelSpin.onTrue(RobotCommands.startFlywheel());
 	}
 }

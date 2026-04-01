@@ -32,7 +32,7 @@ public class SparkFlexFlywheel extends SubsystemBase {
         flywheelMotor.configure(flywheelConfig,ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     }
             
-    public static void setShooterVelocity(double velocityRPM) {
+    public void setShooterVelocity(double velocityRPM) {
         flywheelMotor.getClosedLoopController().setSetpoint(velocityRPM, ControlType.kVelocity);
     }
 }

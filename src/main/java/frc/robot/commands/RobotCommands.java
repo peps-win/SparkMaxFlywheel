@@ -6,6 +6,21 @@ import frc.robot.Constants;
 import frc.robot.Robot;
 
 public class RobotCommands {
-	public static final Command startFlywheel = new InstantCommand(()-> Robot.SparkFlexFlywheel.setShooterVelocity(Constants.FlywheelShooterConstants.velocityRPM),Robot.sparkflexflywheel);
-	public static final Command stopFlywheel = new InstantCommand(()-> Robot.SparkFlexFlywheel.setShooterVelocity(0),Robot.sparkflexflywheel);
+	// public static final Command startFlywheel = new InstantCommand(()-> Robot.sparkflexflywheel.setShooterVelocity(Constants.FlywheelShooterConstants.velocityRPM), Robot.sparkflexflywheel);
+	// public static final Command stopFlywheel = new InstantCommand(()-> Robot.sparkflexflywheel.setShooterVelocity(0),Robot.sparkflexflywheel);
+    // Instead of static final, use static methods
+    public static Command startFlywheel() {
+        return new InstantCommand(
+            () -> Robot.sparkflexflywheel.setShooterVelocity(Constants.FlywheelShooterConstants.velocityRPM),
+            Robot.sparkflexflywheel
+        );
+    }
+
+    public static Command stopFlywheel() {
+        return new InstantCommand(
+            () -> Robot.sparkflexflywheel.setShooterVelocity(0),
+            Robot.sparkflexflywheel
+        );
+    }
 }
+
