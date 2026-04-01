@@ -4,7 +4,6 @@ import com.revrobotics.spark.FeedbackSensor;
 import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
-import com.revrobotics.spark.config.ClosedLoopConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkFlexConfig;
 
@@ -26,11 +25,9 @@ public class SparkFlexFlywheel extends SubsystemBase {
 
         flywheelConfig.closedLoop
             .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
-            .pid(Constants.FlywheelShooterConstants.kP, Constants.FlywheelShooterConstants.kI, Constants.FlywheelShooterConstants.kD)
-            .outputRange(-1, 1);
+            .pid(Constants.FlywheelShooterConstants.kP, Constants.FlywheelShooterConstants.kI, Constants.FlywheelShooterConstants.kD);
             
-        ClosedLoopConfig flywheelClosedLoopConfig = flywheelConfig.closedLoop;
-        flywheelClosedLoopConfig.apply(flywheelClosedLoopConfig);
+        flywheelMotor.apply(flywheelConfig);
     }
             
     public static void setShooterVelocity(double velocityRPM) {
