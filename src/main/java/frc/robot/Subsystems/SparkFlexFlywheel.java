@@ -1,5 +1,7 @@
 package frc.robot.Subsystems;
 
+import com.revrobotics.PersistMode;
+import com.revrobotics.ResetMode;
 import com.revrobotics.spark.FeedbackSensor;
 import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.spark.SparkFlex;
@@ -27,7 +29,7 @@ public class SparkFlexFlywheel extends SubsystemBase {
             .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
             .pid(Constants.FlywheelShooterConstants.kP, Constants.FlywheelShooterConstants.kI, Constants.FlywheelShooterConstants.kD);
             
-        flywheelMotor.apply(flywheelConfig);
+        flywheelMotor.configure(flywheelConfig,ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     }
             
     public static void setShooterVelocity(double velocityRPM) {
