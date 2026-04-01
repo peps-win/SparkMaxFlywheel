@@ -1,0 +1,19 @@
+
+
+public class SparkFlexFlywheel extends SubsystemBase {
+    
+    private final CANSparkFlex flywheelMotor = SparkFlex(Constants.FlywheelShooterConstants.MOTORID, MotorType.kBrushless);
+
+    public SparkFlexFlywheel()
+    {
+        SparkFlexConfig flywheelConfig = new SparkFlexConfig();
+
+        flywheelConfig.idlemode(IdleMode.kCoast);
+        flywheelConfig.voltageCompensation(Constants.FlywheelShooterConstants.FLYWHEEL_VOLTAGE);
+        flywheelConfig.smartCurrentLimit(Constants.FlywheelShooterConstants.FLYWHEEL_CURRENT_LIMIT);
+
+        flywheelConfig.closedLoop
+            .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
+            .pid(Constants.ShooterConstants.kP, Constants.ShooterConstants.kI, Constants.ShooterConstants.kD)
+    }
+}
