@@ -1,6 +1,7 @@
 package frc.robot.Subsystems;
 
 import com.revrobotics.spark.FeedbackSensor;
+import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.ClosedLoopConfig;
@@ -12,7 +13,7 @@ import frc.robot.Constants;
 
 public class SparkFlexFlywheel extends SubsystemBase {
     
-    private final SparkFlex flywheelMotor = new SparkFlex(Constants.FlywheelShooterConstants.MOTORID, MotorType.kBrushless);
+    private final static SparkFlex flywheelMotor = new SparkFlex(Constants.FlywheelShooterConstants.MOTORID, MotorType.kBrushless);
 
     public SparkFlexFlywheel()
     {
