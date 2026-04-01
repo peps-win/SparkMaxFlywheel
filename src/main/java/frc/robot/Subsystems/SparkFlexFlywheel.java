@@ -21,10 +21,11 @@ public class SparkFlexFlywheel extends SubsystemBase {
         flywheelConfig.idleMode(IdleMode.kCoast);
         flywheelConfig.voltageCompensation(Constants.FlywheelShooterConstants.FLYWHEEL_VOLTAGE);
         flywheelConfig.smartCurrentLimit(Constants.FlywheelShooterConstants.FLYWHEEL_CURRENT_LIMIT);
+        flywheelConfig.encoder.uvwMeasurementPeriod(10); // ms
 
         flywheelConfig.closedLoop
-            .feedbackSensor(FeedbackSensor.kPrimaryEncoder);
-            .pid(Constants.FlywheelShooterConstants.kP, Constants.FlywheelShooterConstants.kI, Constants.FlywheelShooterConstants.kD);
+            .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
+            .pid(Constants.FlywheelShooterConstants.kP, Constants.FlywheelShooterConstants.kI, Constants.FlywheelShooterConstants.kD)
             .outputRange(-1, 1);
             
         ClosedLoopConfig flywheelClosedLoopConfig = flywheelConfig.closedLoop;
@@ -32,6 +33,6 @@ public class SparkFlexFlywheel extends SubsystemBase {
     }
             
     public static void setShooterVelocity(double velocityRPM) {
-        flywheelMotor.getClosedLoopController().setSetpoint(velocityRPM)
+        flywheelMotor.getClosedLoopController().setSetpoint(velocityRPM, ControlType.kVelocity);
     }
 }
